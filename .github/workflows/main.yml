@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build_ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: test triangle
+        run: python3 -m unittest test_triangle.py
+      - name: test check_for
+        run: python3 -m unittest test_check_for.py
+
+  build_windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: test triangle
+        run: python.exe -m unittest test_triangle.py
+      - name: test check_for
+        run: python.exe -m unittest test_check_for.py
